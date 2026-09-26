@@ -72,20 +72,6 @@ FOOT nodes communicate through a public relay. This is a deliberate design choic
 
 The trade-off is explicit: transport is centralized through the relay, while chain state remains fully distributed. Each node holds the full chain. Each node validates every block independently. The relay cannot alter a block, forge a transaction, or change a balance. It only moves bytes between open connections.
 
-**Channels:**
-
-- `blocks` — blocks and transactions
-- `snapshot-requests` — chain snapshot requests
-
-**Message types:**
-
-- `HELLO <peerId>` — announces a node
-- `TIP <peerId> <height> <gb> <hash>` — announces the current chain tip
-- `BLOCK <json>` — a full block
-- `TX <json>` — a signed transaction
-- `SNAPSHOTREQ` / `SNAPSHOT <json>` — chain state transfer
-
----
 
 ## 5. Mining and Consensus
 
