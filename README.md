@@ -173,18 +173,9 @@ FOOT is a commodity. It is produced, held, and transferred. There is no market p
 
 ---
 
-## Documentation
-
-- **[Whitepaper](docs/WHITEPAPER.md)** — the full technical description
-- **[User Guide](docs/USER-GUIDE.md)** — detailed setup for every scenario
-- **[Game & SDK Design](docs/GAME-SDK.md)** — how the game and SDK work
-- **[Roadmap](docs/ROADMAP.md)** — what's next
-
----
-
 ## Support
 
-X: [@yourhandle](https://x.com/yourhandle)
+X: https://x.com/EXACCI
 
 **I will never DM you. I will never ask for your seed phrase or private key. I will never ask for funds. Anyone claiming to be me and doing those things is a scammer.**
 
