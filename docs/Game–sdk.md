@@ -60,11 +60,27 @@ The first game that requires FOOT is a football manager. It will not be the last
 
 ## Part 2 — The Football Manager Game
 
+### Two Versions
+
+The game ships in two versions. Same economy. Same rules. Same chain. Different hardware targets.
+
+**PC Version — Quality Photorealistic**
+
+The PC version is the flagship. It targets high-fidelity photorealistic 3D. Realistic player models with detailed faces, real kit textures, licensed-quality stadium lighting, broadcast camera angles, motion-captured animations, and a match presentation that looks like a real football broadcast.
+
+This is the version for players who want the most realistic football manager experience possible. Runs on Windows with a dedicated GPU.
+
+**Mobile Version — Optimized Realistic**
+
+The mobile version keeps the same realistic simulation and the same visual language, optimized for phone hardware. Lower-poly models, simplified lighting, adaptive quality settings. Still reads as realistic football, still runs smoothly on mid-range Android devices.
+
+Both versions share the same gameplay systems, the same match engine, the same economy, and the same chain. A manager on PC and a manager on mobile play in the same leagues against each other.
+
 ### Genre
 
-A football manager game in the tradition of Football Manager. Async multiplayer. One to thirty-two human managers per league. Match results and economic events recorded on the FOOT chain.
+A realistic football manager game, in the tradition of Football Manager. Async multiplayer. One to thirty-two human managers per league. Match results and economic events recorded on the FOOT chain.
 
-Not FIFA. Not Dream League Soccer. Football Manager.
+Not an arcade game. Not a simplified mobile title. A serious football management simulation with photorealistic presentation on PC and optimized realistic presentation on mobile.
 
 ### Why this genre
 
@@ -164,25 +180,19 @@ The game operates its own exchange.
 
 The game earns the spread on every entry and exit. The spread is the exchange's revenue.
 
-### Payment rails
+### Visual direction
 
-- Deposits: USDT (TRC-20) to game-controlled wallets
-- Withdrawals: USDT out, minus a small fee
-- No fiat. No bank. No payment processor.
+**PC version:** Photorealistic. High-resolution player models with detailed facial features and real kit detail. Broadcast-quality stadium environments with dynamic lighting, realistic crowd rendering, and pitch textures that match real venues. Motion-captured animations for every action. Broadcast camera presentation with replays, slow motion, and analysis overlays. The target is that a screenshot from a match looks like a still from a real football broadcast.
 
-### Visual target
+**Mobile version:** Optimized realistic. Simplified player models with clean animation, dynamic lighting, and readable pitch presentation. Runs at 60 FPS on mid-range Android devices without compromising the realistic feel of the simulation. The target is that a phone player experiences the same football, not a different one.
 
-The visual target is Football Manager 26 style — clean 3D models on a pitch, broadcast camera, focus on simulation depth rather than graphical fidelity.
-
-Not photorealistic. Not FIFA. The match engine is math, not physics. The look is clean and readable, not cinematic.
-
-This is not a limitation — it's the correct design for the genre. FM has looked this way for decades because the game lives in the simulation, not the graphics.
+Both versions run on Godot 4. The PC version uses the Forward+ renderer. The mobile version uses the Mobile renderer with adaptive quality scaling.
 
 ### Platform
 
-- **PC first** (Windows via Godot 4 .NET)
-- **Mobile later** (Android via Godot 4 .NET)
-- **Distribution:** itch.io and direct download initially. Steam later if policy allows.
+- **PC (Windows)** — Photorealistic version. Godot 4 .NET with Forward+ renderer.
+- **Mobile (Android)** — Optimized realistic version. Godot 4 .NET with Mobile renderer.
+- **Distribution:** itch.io and direct download initially. Steam for PC later if policy allows. Google Play for mobile later if policy allows.
 
 ### The embedded wallet
 
