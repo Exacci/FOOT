@@ -64,18 +64,18 @@ Genesis is deterministic. Every node that installs the software produces the sam
 
 ## 4. The Network
 
-FOOT nodes communicate over MQTT through a public broker. This is a deliberate design choice with a specific purpose.
+FOOT nodes communicate through a public relay. This is a deliberate design choice with a specific purpose.
 
 **The problem.** Two phones on mobile data both sit behind carrier-grade NAT. Neither can accept an incoming connection. Standard peer-to-peer protocols require at least one side to be dialable. On mobile networks, neither side is.
 
-**The solution.** Every node dials outbound to a public MQTT broker. The broker is reachable from any network. Nodes publish blocks and transactions to a shared topic. Every node subscribed to that topic receives every message. No node needs a public IP.
+**The solution.** Every node dials outbound to a public relay. The relay is reachable from any network. Nodes publish blocks and transactions to a shared channel. Every node subscribed to that channel receives every message. No node needs a public IP.
 
-The trade-off is explicit: transport is centralized through the broker, while chain state remains fully distributed. Each node holds the full chain. Each node validates every block independently. The broker cannot alter a block, forge a transaction, or change a balance. It only moves bytes between open connections.
+The trade-off is explicit: transport is centralized through the relay, while chain state remains fully distributed. Each node holds the full chain. Each node validates every block independently. The relay cannot alter a block, forge a transaction, or change a balance. It only moves bytes between open connections.
 
-**Topics:**
+**Channels:**
 
-- `footnode-foot-v1/blocks` — blocks and transactions
-- `footnode-foot-v1/snapshot-requests` — chain snapshot requests
+- `blocks` — blocks and transactions
+- `snapshot-requests` — chain snapshot requests
 
 **Message types:**
 
@@ -132,7 +132,7 @@ Three lines to receive FOOT. Three lines to send FOOT. The SDK handles all crypt
 
 **What it does NOT do.** The SDK does not include the node. It talks to one over a connection the game developer provides.
 
-**Why this matters.** A game that wants to use FOOT does not need to understand the chain's consensus rules, implement secp256r1 cryptography, manage nonces, handle MQTT, or run a node itself. It just includes the SDK.
+**Why this matters.** A game that wants to use FOOT does not need to understand the chain's consensus rules, implement secp256r1 cryptography, manage nonces, handle the network layer, or run a node itself. It just includes the SDK.
 
 **Language support plan.**
 
@@ -219,14 +219,14 @@ Nothing. But the fake chain has less cumulative GB than the real one, because th
 **8. What is the consensus mechanism?**
 There is no classical consensus. Mining rate is fixed per node. Fork resolution is by cumulative GB, then by lower block hash. Every node reaches the same conclusion from the same chain.
 
-**9. Why MQTT instead of libp2p?**
-Because phones on carrier-grade NAT cannot accept incoming connections. MQTT is outbound-only, works through CGNAT, and runs on a free public broker. Libp2p requires a public relay or a full rewrite of the P2P layer.
+**9. Why a relay instead of direct peer-to-peer?**
+Because phones on carrier-grade NAT cannot accept incoming connections. The relay is outbound-only from the node's perspective, works through CGNAT, and is publicly available. Direct peer-to-peer would require a public IP on every device.
 
-**10. What happens if the broker goes down?**
-The chain survives on every node. The network pauses. No new blocks are produced until a broker is reachable. Migration to a new broker is a one-line change in the node software.
+**10. What happens if the relay goes down?**
+The chain survives on every node. The network pauses. No new blocks are produced until a relay is reachable.
 
-**11. Can the broker steal my FOOT?**
-No. The broker never holds keys and never signs transactions. It moves bytes between open connections. Every block is validated independently by every node.
+**11. Can the relay steal my FOOT?**
+No. The relay never holds keys and never signs transactions. It moves bytes between open connections. Every block is validated independently by every node.
 
 **12. Can I lose my FOOT?**
 Yes, if you lose your twelve-word seed. There is no recovery. The seed is the wallet. Back it up offline.
@@ -269,4 +269,4 @@ Every game that integrates the SDK becomes a FOOT consumer.
 
 **The economic effect.** Every SDK integration increases FOOT demand. Every game becomes a new source of miners-turned-buyers, and buyers-turned-miners. The more games use FOOT, the more important FOOT becomes — not because more people want to hold it, but because more games require it to function.
 
-That is what makes FOOT important. Not the price. Not the marketing. The fact that a growing number of games cannot run without it.￼Enter
+That is what makes FOOT important. Not the price. Not the marketing. The fact that a growing number of games cannot run without it.
