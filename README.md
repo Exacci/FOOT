@@ -6,7 +6,7 @@ A commodity produced from data.
 
 ## Download
 
-**Latest release:** [See the Releases page](../../releases/latest)
+**Latest release:** https://github.com/Exacci/FOOT/releases/tag/Foot
 
 | File | Platform | What it is |
 |---|---|---|
